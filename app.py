@@ -159,6 +159,24 @@ col1, col2 = st.columns([3, 1])
 with col1:
     send_button = st.button("📤 Envoyer", use_container_width=True, type="primary")
 
+# Google Meet link
+st.markdown("""
+    <div style='text-align: center; margin-top: 15px;'>
+        <a href='https://meet.google.com/ojm-xxij-odd' target='_blank' style='
+            color: #1E3A8A;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border: 2px solid #1E3A8A;
+            border-radius: 8px;
+            display: inline-block;
+            transition: all 0.3s;
+        '>
+            📹 Rejoindre l'appel Google Meet
+        </a>
+    </div>
+""", unsafe_allow_html=True)
+
 # Process message when button is clicked
 if send_button and user_input:
     # Add user message to history
