@@ -84,11 +84,9 @@ if "messages" not in st.session_state:
     }
 
 # Header with logo
-st.markdown("""
-    <div style='text-align: center; padding: 20px 0;'>
-        <img src='https://groupe-delia.com/logo/AI_LOGO.png' style='width: 200px; margin-bottom: 20px;' alt='Delia Logo'>
-    </div>
-""", unsafe_allow_html=True)
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    st.image("AI_LOGO.webp", width=200)
     
 st.markdown("<h1 class='main-header'>🇫🇷 Parle avec Steve</h1>", unsafe_allow_html=True)
 
