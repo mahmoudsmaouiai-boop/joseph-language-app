@@ -140,10 +140,15 @@ else:
 
 # User input
 st.divider()
+
+# Use a dynamic key that changes after each message to clear the input
+if "input_key" not in st.session_state:
+    st.session_state.input_key = 0
+
 user_input = st.text_input(
     "Écris ton message en français:",
     placeholder="Ex: Bonjour Joseph, comment ça va?",
-    key="user_input"
+    key=f"user_input_{st.session_state.input_key}"
 )
 
 col1, col2 = st.columns([3, 1])
@@ -181,6 +186,9 @@ if send_button and user_input:
                 "content": joseph_response
             })
             
+            # Increment input key to clear the text field
+            st.session_state.input_key += 1
+            
             # Rerun to show updated conversation
             st.rerun()
             
@@ -191,4 +199,3 @@ if send_button and user_input:
 # Footer
 st.divider()
 st.caption("🚀 Fait avec Streamlit + Groq | 🇫🇷 Apprends le français avec Joseph")
-
