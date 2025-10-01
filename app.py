@@ -166,7 +166,7 @@ if send_button and user_input:
             
             # Call Groq API
             response = client.chat.completions.create(
-                model="llama-3.1-70b-versatile",  # Fast and good model
+                model="llama-3.3-70b-versatile",  # Fast and good model
                 messages=api_messages,
                 temperature=0.8,  # More creative/casual
                 max_tokens=150  # Keep responses short
@@ -191,3 +191,4 @@ if send_button and user_input:
 # Footer
 st.divider()
 st.caption("🚀 Fait avec Streamlit + Groq | 🇫🇷 Apprends le français avec Joseph")
+
