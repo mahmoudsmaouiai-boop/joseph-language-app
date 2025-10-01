@@ -11,7 +11,7 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 # Page configuration
 st.set_page_config(
-    page_title="Talk to Joseph 🇫🇷",
+    page_title="Talk to Steve 🇫🇷",
     page_icon="🇫🇷",
     layout="centered"
 )
@@ -24,14 +24,14 @@ st.markdown("""
         color: #1E3A8A;
         padding: 20px 0;
     }
-    .joseph-container {
+    .steve-container {
         text-align: center;
         padding: 30px;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         border-radius: 20px;
         margin: 20px 0;
     }
-    .joseph-image {
+    .steve-image {
         font-size: 100px;
         margin: 20px 0;
     }
@@ -50,7 +50,7 @@ st.markdown("""
         text-align: right;
         color: #1E293B;
     }
-    .joseph-message {
+    .steve-message {
         background-color: #F3F4F6;
         text-align: left;
         color: #1E293B;
@@ -61,10 +61,10 @@ st.markdown("""
 # Initialize session state for conversation history
 if "messages" not in st.session_state:
     st.session_state.messages = []
-    # System prompt - Joseph's personality
+    # System prompt - Steve's personality
     st.session_state.system_prompt = {
         "role": "system",
-        "content": """Tu es Joseph, un collègue français qui travaille dans une entreprise tech. 
+        "content": """Tu es Steve, un collègue français qui travaille dans une entreprise tech. 
         Tu es décontracté mais professionnel. Tu aimes parler de:
         - Projets de travail et collaboration
         - Technologie et innovation
@@ -84,13 +84,13 @@ if "messages" not in st.session_state:
     }
 
 # Header
-st.markdown("<h1 class='main-header'>🇫🇷 Parle avec Joseph</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='main-header'>🇫🇷 Parle avec Steve</h1>", unsafe_allow_html=True)
 
-# Joseph's character display
+# Steve's character display
 st.markdown("""
-    <div class='joseph-container'>
-        <div class='joseph-image'>👨‍💼</div>
-        <h2 style='color: white; margin: 0;'>Joseph</h2>
+    <div class='steve-container'>
+        <div class='steve-image'>👨‍💼</div>
+        <h2 style='color: white; margin: 0;'>Steve</h2>
         <p style='color: white; margin: 5px 0;'>Ton collègue français</p>
     </div>
 """, unsafe_allow_html=True)
@@ -98,7 +98,7 @@ st.markdown("""
 # Sidebar with info
 with st.sidebar:
     st.header("ℹ️ À propos")
-    st.write("**Joseph** est ton collègue français dans une entreprise tech.")
+    st.write("**Steve** est ton collègue français dans une entreprise tech.")
     st.write("Pratique ton français en parlant avec lui!")
     
     st.divider()
@@ -131,12 +131,12 @@ if st.session_state.messages:
             """, unsafe_allow_html=True)
         elif message["role"] == "assistant":
             st.markdown(f"""
-                <div class='chat-message joseph-message'>
-                    <strong>Joseph:</strong> {message['content']}
+                <div class='chat-message steve-message'>
+                    <strong>Steve:</strong> {message['content']}
                 </div>
             """, unsafe_allow_html=True)
 else:
-    st.info("👋 Dis bonjour à Joseph pour commencer la conversation!")
+    st.info("👋 Dis bonjour à Steve pour commencer la conversation!")
 
 # User input
 st.divider()
@@ -147,7 +147,7 @@ if "input_key" not in st.session_state:
 
 user_input = st.text_input(
     "Écris ton message en français:",
-    placeholder="Ex: Bonjour Joseph, comment ça va?",
+    placeholder="Ex: Bonjour Steve, comment ça va?",
     key=f"user_input_{st.session_state.input_key}"
 )
 
@@ -164,7 +164,7 @@ if send_button and user_input:
     })
     
     # Show loading state
-    with st.spinner("Joseph réfléchit..."):
+    with st.spinner("Steve réfléchit..."):
         try:
             # Prepare messages for API (include system prompt)
             api_messages = [st.session_state.system_prompt] + st.session_state.messages
@@ -177,13 +177,13 @@ if send_button and user_input:
                 max_tokens=150  # Keep responses short
             )
             
-            # Get Joseph's response
-            joseph_response = response.choices[0].message.content
+            # Get Steve's response
+            steve_response = response.choices[0].message.content
             
             # Add to conversation history
             st.session_state.messages.append({
                 "role": "assistant",
-                "content": joseph_response
+                "content": steve_response
             })
             
             # Increment input key to clear the text field
@@ -198,4 +198,4 @@ if send_button and user_input:
 
 # Footer
 st.divider()
-st.caption("🚀 Fait avec Streamlit + Groq | 🇫🇷 Apprends le français avec Joseph")
+st.caption("🚀 Fait avec Streamlit + Groq | 🇫🇷 Apprends le français avec Steve")
