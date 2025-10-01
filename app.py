@@ -84,9 +84,9 @@ if "messages" not in st.session_state:
     }
 
 # Header with logo
-col1, col2, col3 = st.columns([1, 2, 1])
+col1, col2, col3 = st.columns([1, 1, 1])
 with col2:
-    st.image("AI_LOGO.webp", width=200)
+    st.image("AI_LOGO.webp", use_column_width=True)
     
 st.markdown("<h1 class='main-header'>🇫🇷 Parle avec Steve</h1>", unsafe_allow_html=True)
 
