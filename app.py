@@ -83,7 +83,11 @@ if "messages" not in st.session_state:
         """
     }
 
-# Header
+# Header with logo
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    st.image("https://groupe-delia.com/_next/image?url=%2Flogo%2FAI_LOGO.png&w=1920&q=75", width=200)
+    
 st.markdown("<h1 class='main-header'>🇫🇷 Parle avec Steve</h1>", unsafe_allow_html=True)
 
 # Steve's character display
