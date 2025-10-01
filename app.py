@@ -39,14 +39,21 @@ st.markdown("""
         padding: 15px;
         border-radius: 10px;
         margin: 10px 0;
+        color: #1E293B !important;
+        font-weight: 500;
+    }
+    .chat-message strong {
+        color: #0F172A;
     }
     .user-message {
         background-color: #E0E7FF;
         text-align: right;
+        color: #1E293B;
     }
     .joseph-message {
         background-color: #F3F4F6;
         text-align: left;
+        color: #1E293B;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -159,7 +166,7 @@ if send_button and user_input:
             
             # Call Groq API
             response = client.chat.completions.create(
-                model="llama-3.3-70b-versatile", # Fast and good model
+                model="llama-3.1-70b-versatile",  # Fast and good model
                 messages=api_messages,
                 temperature=0.8,  # More creative/casual
                 max_tokens=150  # Keep responses short
